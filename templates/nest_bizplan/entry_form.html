@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style type="text/css">
+        .longQuestion .errorlist { list-style: none; padding: 0; margin: 0; }
+        .longQuestion .errorlist li { color: red; padding: 0; margin: 0; }
+        form.commonform > fieldset > div.longQuestion > textarea { width: 871px; }
+        form.commonform > fieldset > div.longQuestion { margin: 15px 0 2px; }
+        form.commonform h2 { margin: 20px 0 8px; }
+        form.commonform .longQuestion p:first-child { margin-top: 3px; }
+        .captcha_error { color: red; }
+        button { margin: 15px 0 0; padding: 10px; font-size: 1.1em;  }
+    </style>
+    
+    <h1>Contest Entry: Executive Summary</h1>
+    <p>The deadline for submissions in round 1 is December 3, 2010, 11:59PM EST.</p>
+    {% if captcha_error %}
+        <div class="captcha_error">
+            You appear have entered the incorrect response to the anti-spam validation below
+        </div>
+    {% endif %}
+    {{ form.errors }}
+    <form method="post" class="commonform">
+        <fieldset>
+            <h2>General Contact Information</h2>
+            <ul>
+                {% for field in form %}
+                    {% if field.html_name != 'problem' and field.html_name != 'solution' and field.html_name != 'execution' %}
+                        {% include 'nest_bizplan/form_field.html' %}
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </fieldset>
+        <fieldset>
+            <h2>Business Plan Summary</h2>
+            <div class="longQuestion">
+                <p>In no more than 1,500 characters, answer the following:</p>
+                <p>Describe the problem, what impact/change you seek and the population served. When possible provide evidence supporting your assertions.</p>
+                {{ form.problem.errors }}
+                {{ form.problem }}
+            </div>
+            
+            <div class="longQuestion">
+                <p>In no more than 3,000 characters, answer the following:</p>
+                <p>Articulate your idea/solution. Indicate what sets your solution apart from others who have attempted to address the same need. What do you expect as results?</p>
+                {{ form.solution.errors }}
+                {{ form.solution }}
+            </div>
+            
+            <div class="longQuestion">
+                <p>In no more than 2,000 characters, answer the following:</p>
+                <p>Describe the problem, what impact/change you seek and the population served. When possible provide evidence supporting your assertions.</p>
+                {{ form.execution.errors }}
+                {{ form.execution }}
+            </div>
+        </fieldset>
+        <fieldset>
+            <h2>Anti-spam Validation</h2>
+            Please enter the two words that you see below.  This helps us fight off spammers.
+            <div id="recaptcha">
+                {{ html_captcha|safe }}
+            </div>
+        </fieldset>
+        <button type="submit">Submit Entry</button>
+    </form>
+{% endblock %}
