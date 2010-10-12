@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block tab_nestegg_class %}{% endblock %}
+{% block tab_bizplan_class %}active{% endblock %}
+{% block submenu %}{% include 'themes/nest/submenu/submenu_bizplan.html' %}{% endblock %}
+
 {% block content %}
     <style type="text/css">
         .longQuestion .errorlist { list-style: none; padding: 0; margin: 0; }
@@ -13,7 +17,10 @@
     </style>
     
     <h1>Contest Entry: Executive Summary</h1>
-    <p>The deadline for submissions in round 1 is December 3, 2010, 11:59PM EST.</p>
+    <p>Thank you for your interest in applying to the Milken-PennGSE Education Business Plan Competition!</p>
+    <p>Educational entrepreneurship business plans should outline the problem they address, offer a solution, and discuss scaling possibilities for bringing the proposed innovation to additional settings. Broadly construed, educational entrepreneurship initiatives can address a wide range of educational issues. This competition encourages applications in every conceivable educational setting – from early childhood through corporate/adult training, in settings and contexts anywhere in the world. We also welcome both nonprofit and for-profit submissions. In terms of focus, we invite submissions that address issues of curriculum, instruction, educator professional development, assessment and evaluation, collaborations, learning design, technological innovations, learning/school support tools, and more. In evaluating business plan submissions, our judges will consider the importance of the educational problem, the creativity and feasibility of the proposed solution, and the potential for widespread impact.</p>
+    <p>Applicant teams may include individual or team applicants; no experience in education is required. However, we do have a $250,000 revenue threshold for this competition; only organizations that have raised less than this amount of revenue should apply. If your organization has raised more than $250,000, your application will be disqualified.</p>
+    <p>Thank you, and best of luck! </p>
     {% if captcha_error %}
         <div class="captcha_error">
             You appear have entered the incorrect response to the anti-spam validation below
@@ -33,21 +40,21 @@
         <fieldset>
             <h2>Business Plan Summary</h2>
             <div class="longQuestion">
-                <p>In no more than 1,500 characters, answer the following:</p>
+                <p>In no more than 1,500 characters, including spaces, answer the following:</p>
                 <p>Describe the problem, what impact/change you seek and the population served. When possible provide evidence supporting your assertions.</p>
                 {{ form.problem.errors }}
                 {{ form.problem }}
             </div>
             
             <div class="longQuestion">
-                <p>In no more than 3,000 characters, answer the following:</p>
+                <p>In no more than 3,000 characters, including spaces, answer the following:</p>
                 <p>Articulate your idea/solution. Indicate what sets your solution apart from others who have attempted to address the same need. What do you expect as results?</p>
                 {{ form.solution.errors }}
                 {{ form.solution }}
             </div>
             
             <div class="longQuestion">
-                <p>In no more than 2,000 characters, answer the following:</p>
+                <p>In no more than 2,000 characters, including spaces, answer the following:</p>
                 <p>Describe the problem, what impact/change you seek and the population served. When possible provide evidence supporting your assertions.</p>
                 {{ form.execution.errors }}
                 {{ form.execution }}
@@ -60,6 +67,7 @@
                 {{ html_captcha|safe }}
             </div>
         </fieldset>
+        <p style="margin-top: 30px; font-weight: bold;">Once you submit your entry, you will not be able to return to it or make changes. Please be sure your application is complete before clicking submit. Thank you!</p>
         <button type="submit">Submit Entry</button>
     </form>
 {% endblock %}
