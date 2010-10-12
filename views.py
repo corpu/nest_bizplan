@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -22,7 +23,13 @@ def entry_form(request):
                 captcha_error = True
                 html_captcha = captcha.displayhtml(settings.RECAPTCHA_PUB_KEY)
                 return render_to_response('nest_bizplan/entry_form.html', {'form': form, 'captcha_error': captcha_error, 'html_captcha': html_captcha}, context_instance=RequestContext(request))
-            form.save()
+            new_entry = form.save()
+            
+            # Send e-mail to applicant
+            subject = 'Education Business Plan Competition - Application Received '
+            body = 'Thank you for entering the Milken-PennGSE Education Business Plan Competition! We have received your application. All applications will be reviewed by a panel of judges. Some applicants will then be invited to continue to the next round of the competition, as semi-finalists. We expect that semi-finalists will be announced by January 25, 2011. We will be in touch then - thank you, and best of luck!'
+            send_mail(subject, body, settings.DEFAULT_FROM_EMAIL, [new_entry.email])
+            
             return HttpResponseRedirect('/business-plan-competition-thanks/')
     else:
         form = EntryForm()
