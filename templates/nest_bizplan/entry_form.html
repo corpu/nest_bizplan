@@ -19,7 +19,7 @@
     <h1>Contest Entry: Executive Summary</h1>
     <p>Thank you for your interest in applying to the Milken-PennGSE Education Business Plan Competition!</p>
     <p>Educational entrepreneurship business plans should outline the problem they address, offer a solution, and discuss scaling possibilities for bringing the proposed innovation to additional settings. Broadly construed, educational entrepreneurship initiatives can address a wide range of educational issues. This competition encourages applications in every conceivable educational setting – from early childhood through corporate/adult training, in settings and contexts anywhere in the world. We also welcome both nonprofit and for-profit submissions. In terms of focus, we invite submissions that address issues of curriculum, instruction, educator professional development, assessment and evaluation, collaborations, learning design, technological innovations, learning/school support tools, and more. In evaluating business plan submissions, our judges will consider the importance of the educational problem, the creativity and feasibility of the proposed solution, and the potential for widespread impact.</p>
-    <p>Applicant teams may include individual or team applicants; no experience in education is required. However, we do have a $250,000 revenue threshold for this competition; only organizations that have raised less than this amount of revenue should apply. If your organization has raised more than $250,000, your application will be disqualified.</p>
+    <p>Applicant teams may include individual or team applicants; no experience in education is required. However, we do have a $250,000 revenue threshold for this competition; only organizations that have raised less than this amount of revenue should apply. If your organization has raised more than $250,000, your application will be disqualified.  Please be sure to also review the Competition <a href="http://nestcentral.org/business-plan-competition/rules/" target="_blank">Rules</a> before submitting your entry.</p>
     <p>Thank you, and best of luck! </p>
     {% if captcha_error %}
         <div class="captcha_error">
@@ -33,6 +33,9 @@
                 {% for field in form %}
                     {% if field.html_name != 'problem' and field.html_name != 'solution' and field.html_name != 'execution' %}
                         {% include 'nest_bizplan/form_field.html' %}
+                    {% endif %}
+                    {% if field.html_name == 'applicant' %}
+						<p>*The first and last name of the individual entering the competition OR the name of the organization entering the competition. Should the entry win a prize in the competition, the proceeds will go to the Formal Applicant listed here.</p>
                     {% endif %}
                 {% endfor %}
             </ul>

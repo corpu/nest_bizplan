@@ -4,8 +4,9 @@ from django.db import models
 # Create your models here.
 class Entry(models.Model):
     """An entry for round 1 of the business plan competition"""
-    first_name = models.CharField(max_length=200)
-    last_name = models.CharField(max_length=200)
+    first_name = models.CharField('Contact First Name', max_length=200)
+    last_name = models.CharField('Contact Last Name', max_length=200)
+    applicant = models.CharField('Formal Applicant', max_length=200)
     job_title = models.CharField(max_length=200, blank=True, null=True)
     organization = models.CharField(max_length=200, blank=True, null=True)
     email = models.EmailField()
