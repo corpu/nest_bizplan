@@ -32,7 +32,7 @@
             <h2>General Contact Information</h2>
             <ul>
                 {% for field in form %}
-                    {% if field.html_name != 'problem' and field.html_name != 'solution' and field.html_name != 'execution' %}
+                    {% if field.html_name != 'problem' and field.html_name != 'solution' and field.html_name != 'execution' and field.html_name != 'is_startl_applicant' and field.html_name != 'startl_fiscally_sustainable' and field.html_name != 'startl_enable_access' and field.html_name != 'startl_reduce_cost' %}
                         {% include 'nest_bizplan/form_field.html' %}
                     {% endif %}
                     {% if field.html_name == 'applicant' %}
@@ -62,6 +62,30 @@
                 <p>How are you going to turn your idea into a reality? What resources do you need? How will you sustain the effort? What milestones do you foresee and how/when will you make potential corrections? What data do you require to make sound decisions?</p>
                 {{ form.execution.errors }}
                 {{ form.execution }}
+            </div>
+        </fieldset>
+        <fieldset>
+            <h2>Startl Prize</h2>
+            <p>If your business plan leverages openly-licensed content, you may also qualify for the Startl Prize for Open Educational Resources.  In order to also apply for the Startl Prize, please provide all of the details below. Read more about the <a href="/business-plan-competition/the-startl-prize-for-open-educational-resources/">Startl Prize here</a>.</p>
+            <ul style="margin: 20px 0 0 20px;">
+                {{ form.is_startl_applicant.errors }}
+                <input type="checkbox" name="is_startl_applicant" id="id_is_startl_applicant">
+                <label for="id_is_startl_applicant">I would like to submit my plan for consideration for the Startl Prize</label>
+            </ul>
+            <div class="longQuestion">
+                <p>Please present your basis for a fiscally sustainable business strategy. </p>
+                {{ form.startl_fiscally_sustainable.errors }}
+                {{ form.startl_fiscally_sustainable }}
+            </div>
+            <div class="longQuestion">
+                <p>Please describe the degree to which your business plan enables access to openly licensed educational resources</p>
+                {{ form.startl_enable_access.errors }}
+                {{ form.startl_enable_access }}
+            </div>
+            <div class="longQuestion">
+                <p>Please describe the degree to which your business plan dramatically reduces the cost of educational opportunities</p>
+                {{ form.startl_reduce_cost.errors }}
+                {{ form.startl_reduce_cost }}
             </div>
         </fieldset>
         <fieldset>

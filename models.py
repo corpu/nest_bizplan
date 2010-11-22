@@ -18,6 +18,12 @@ class Entry(models.Model):
     solution = models.TextField(validators=[MaxLengthValidator(3000)])
     execution = models.TextField(validators=[MaxLengthValidator(2000)])
     
+    # Startl Prize Fields
+    is_startl_applicant = models.BooleanField('I would like to submit my plan for the Startl Prize', default=False)
+    startl_fiscally_sustainable = models.TextField(blank=True, null=True)
+    startl_enable_access = models.TextField(blank=True, null=True)
+    startl_reduce_cost = models.TextField(blank=True, null=True)
+    
     def __unicode__(self):
         return '%s %s' % (self.first_name, self.last_name,)
     
