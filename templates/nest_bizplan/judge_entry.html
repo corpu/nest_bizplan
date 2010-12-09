@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style type="text/css">
+        .entryField .label { color: #215F9B; font-size: 1.2em; line-height: 1.3em; font-weight: bold; }
+        .entryField .value { color: #666; font-size: 1.1em; line-height: 1.3em; }
+    </style>
+    <div class="returnLink"><a href="{% url nest_bizplan-judge_listing %}">&laquo; Return to entry listing</a></div>
+    <h1>Business Plan Entry #{{ entry.id }}</h1>
+    <div class="entryField">
+        <p class="label">Describe the problem, what impact/change you seek and the population served.<br />When possible provide evidence supporting your assertions.</p>
+        <p class="value">{{ entry.problem }}</p>
+    </div>
+    <div class="entryField">
+        <p class="label">Articulate your idea/solution. Indicate what sets your solution apart from others who have<br />attempted to address the same need. What do you expect as results?</p>
+        <p class="value">{{ entry.solution }}</p>
+    </div>
+    <div class="entryField">
+        <p class="label">How are you going to turn your idea into a reality? What resources do you need? How will you sustain the effort? What milestones do you foresee and how/when will you make potential corrections? What data do you require to make sound decisions?</p>
+        <p class="value">{{ entry.execution }}</p>
+    </div>
+    {% if entry.is_startl_applicant %}
+        <h2>Startl Prize Submission</h2>
+        <div class="entryField">
+            <p class="label">Please present your basis for a fiscally sustainable business strategy.</p>
+            <p class="value">{{ entry.startl_fiscally_sustainable }}</p>
+        </div>
+        <div class="entryField">
+            <p class="label">Please describe the degree to which your business plan enables access to openly licensed educational resources.</p>
+            <p class="value">{{ entry.startl_enable_access }}</p>
+        </div>
+        <div class="entryField">
+            <p class="label">Please describe the degree to which your business plan dramatically reduces the cost of educational opportunities.</p>
+            <p class="value">{{ entry.startl_reduce_cost }}</p>
+        </div>
+    {% endif %}
+    <div class="returnLink"><a href="{% url nest_bizplan-judge_listing %}">&laquo; Return to entry listing</a></div>
+{% endblock %}

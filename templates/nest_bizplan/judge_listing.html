@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style type="text/css">
+        table.lightweight {
+            border: solid 1px #DCE8F5;
+            border-collapse: collapse;
+        }
+        table.lightweight td, table.lightweight th {
+            padding: 5px;
+            border: solid 1px #DCE8F5;
+        }
+        table.lightweight td { color: #333; font-size: 1.1em; line-height: 1.2em; }
+        table.lightweight th { text-align: center; }
+        table.lightweight tr.even:hover, table.lightweight tr.odd:hover {
+            background-color: #DCE8F5;
+            cursor: pointer;
+        }
+        table.lightweight tr.even {
+            background-color: white;
+        }
+        table.lightweight tr.odd {
+            background-color: #eee;
+        }
+    
+    </style>
+    <table class="lightweight">
+        <tr>
+            <th style="width: 100px; ">Business Plan Entry #</th>
+            <th>Business Problem Summary</th>
+        </tr>
+        {% for entry in entries %}
+            <tr class="{% cycle 'odd' 'even' %}" onclick="document.location.href='{% url nest_bizplan-judge_entry entry.id %}';">
+                <td style="text-align: center;">{{ entry.id }}</td>
+                <td>{{ entry.problem|truncatewords:100 }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

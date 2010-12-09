@@ -1,12 +1,13 @@
 from django.conf import settings
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response
+from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 
 from recaptcha.client import captcha
 
 from nest_bizplan.forms import EntryForm
+from nest_bizplan.models import Entry
 
 def entry_form(request):
     captcha_error = None
@@ -36,4 +37,12 @@ def entry_form(request):
     
     return render_to_response('nest_bizplan/entry_form.html', {'form': form, 'html_captcha': html_captcha}, context_instance=RequestContext(request))
 
-            
+def judge_listing(request):
+    entries = Entry.objects.all().order_by('id',)
+    
+    return render_to_response('nest_bizplan/judge_listing.html', {'entries': entries}, context_instance=RequestContext(request))
+
+def judge_entry(request, entry_id = None):
+    entry = get_object_or_404(Entry, id=entry_id)
+    
+    return render_to_response('nest_bizplan/judge_entry.html', {'entry': entry}, context_instance=RequestContext(request))
