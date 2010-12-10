@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block tab_nestegg_class %}{% endblock %}
+{% block tab_bizplan_class %}active{% endblock %}
+{% block submenu %}{% include 'themes/nest/submenu/submenu_bizplan.html' %}{% endblock %}
+
 {% block content %}
     <style type="text/css">
         table.lightweight {
