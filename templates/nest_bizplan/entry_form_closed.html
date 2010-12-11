@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block tab_nestegg_class %}{% endblock %}
+{% block tab_bizplan_class %}active{% endblock %}
+{% block submenu %}{% include 'themes/nest/submenu/submenu_bizplan.html' %}{% endblock %}
+
+{% block content %}
+    <style type="text/css">
+        .longQuestion .errorlist { list-style: none; padding: 0; margin: 0; }
+        .longQuestion .errorlist li { color: red; padding: 0; margin: 0; }
+        form.commonform > fieldset > div.longQuestion > textarea { width: 871px; }
+        form.commonform > fieldset > div.longQuestion { margin: 15px 0 2px; }
+        form.commonform h2 { margin: 20px 0 8px; }
+        form.commonform .longQuestion p:first-child { margin-top: 3px; }
+        .captcha_error { color: red; }
+        button { margin: 15px 0 0; padding: 10px; font-size: 1.1em;  }
+    </style>
+    
+    <h1>The 2011 Business Plan Competition is now closed.</h1>
+    <p>The 2011 Business Plan Competition is now closed. Judges will review submissions, and we will announce the semi-finalists by 1/25/11.</p>
+    <p>Thank you for your interest, and best of luck!</p>
+{% endblock %}

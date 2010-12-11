@@ -35,7 +35,7 @@ def entry_form(request):
     else:
         form = EntryForm()
     
-    return render_to_response('nest_bizplan/entry_form.html', {'form': form, 'html_captcha': html_captcha}, context_instance=RequestContext(request))
+    return render_to_response('nest_bizplan/entry_form_closed.html', {'form': form, 'html_captcha': html_captcha}, context_instance=RequestContext(request))
 
 def judge_listing(request):
     entries = Entry.objects.all().order_by('id',)
